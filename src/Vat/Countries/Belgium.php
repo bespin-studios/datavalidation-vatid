@@ -20,7 +20,7 @@ class Belgium implements CountryInterface
     // -------------------------------------------------------------------------
     public static function verify(string $vatId): bool
     {
-        if (!preg_match('/^BE(0[1-9]\d{8}|1\d{9})$/', $vatId, $m)) {
+        if (!preg_match('/^BE([01]\d{9})$/', $vatId, $m)) {
             return false;
         }
         $digits = $m[1];

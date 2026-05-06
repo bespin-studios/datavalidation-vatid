@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75a367cbe5f8100b2ad48c8d29fbb189",
+    "content-hash": "f5883cac42769cddbc5b77683b13d55d",
     "packages": [
         {
             "name": "bespin/datavalidation-shared",
-            "version": "v1.2.1",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bespin-studios/datavalidation-shared.git",
-                "reference": "2886c2b2d5ff738306180aafc8d2a56e4a574bcd"
+                "reference": "181737e7f7ef18e6ce71c37fe879034c0f764299"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bespin-studios/datavalidation-shared/zipball/2886c2b2d5ff738306180aafc8d2a56e4a574bcd",
-                "reference": "2886c2b2d5ff738306180aafc8d2a56e4a574bcd",
+                "url": "https://api.github.com/repos/bespin-studios/datavalidation-shared/zipball/181737e7f7ef18e6ce71c37fe879034c0f764299",
+                "reference": "181737e7f7ef18e6ce71c37fe879034c0f764299",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,9 +42,9 @@
             "description": "Shared components for bespin/datavalidation packages",
             "support": {
                 "issues": "https://github.com/bespin-studios/datavalidation-shared/issues",
-                "source": "https://github.com/bespin-studios/datavalidation-shared/tree/v1.2.1"
+                "source": "https://github.com/bespin-studios/datavalidation-shared/tree/v1.5.0"
             },
-            "time": "2025-05-20T12:20:56+00:00"
+            "time": "2026-05-06T20:09:51+00:00"
         }
     ],
     "packages-dev": [
@@ -1964,5 +1964,5 @@
     "platform-overrides": {
         "php": "8.4.1"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

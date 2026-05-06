@@ -15,12 +15,17 @@ class Sweden implements CountryInterface
     }
 
     // -------------------------------------------------------------------------
-    // SWEDEN  SE + 12 digits (last two are always 01 for single-entity companies)
+    // SWEDEN  SE + 12 digits
+    // Digits 11–12: entity suffix (01 = single entity, 02–99 = branch traders).
     // Checksum: Luhn algorithm on first 10 digits; digit 11 is type (01 suffix).
     // -------------------------------------------------------------------------
     public static function verify(string $vatId): bool
     {
-        if (!preg_match('/^SE(\d{10}01)$/', $vatId, $m)) {
+        if (!preg_match('/^SE(\d{10})(\d{2})$/', $vatId, $m)) {
+            return false;
+        }
+        $suffix = (int)$m[2];
+        if ($suffix < 1 || $suffix > 99) {
             return false;
         }
         $d = array_map('intval', str_split($m[1]));
