@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.1...v1.1.2) (2026-05-06)
+
+
+### Bug Fixes
+
+* issue verifying czech vat ids ([f7f7f4f](https://github.com/bespin-studios/datavalidation-vatid/commit/f7f7f4f6eb671539ce4764ebe2f6f4e7d8da5abd))
+
 ## [1.1.1](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.0...v1.1.1) (2026-05-06)
 
 
