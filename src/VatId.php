@@ -14,10 +14,10 @@ class VatId implements FormatterInterface
     {
         try {
             $normalised = self::convertToMachineReadable($vatId);
+            $countryObject = self::resolveCountryObject($country, $vatId);
         } catch (Throwable) {
             return false;
         }
-        $countryObject = self::resolveCountryObject($country, $vatId);
         return $countryObject::verify($normalised);
     }
 
