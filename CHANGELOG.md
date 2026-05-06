@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.0...v1.1.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* verify shouldn't throw exceptions ([06bdb43](https://github.com/bespin-studios/datavalidation-vatid/commit/06bdb43a9a1341dac3a4c94bacf318e0213a9a9d))
+
 # [1.1.0](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.0.0...v1.1.0) (2026-05-06)
 
 
