@@ -45,11 +45,7 @@ class CzechRepublic implements CountryInterface
         for ($i = 0; $i < 7; $i++) {
             $sum += $d[$i] * $weights[$i];
         }
-        $remainder = $sum % 11;
-        if ($remainder === 1) {
-            return false;
-        }
-        $check = (11 - $remainder) % 10;
+        $check = (11 - ($sum % 11)) % 11 % 10;
         return $check === $d[7];
     }
 
