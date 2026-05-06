@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.0.0...v1.1.0) (2026-05-06)
+
+
+### Features
+
+* additional countries ([74a07a6](https://github.com/bespin-studios/datavalidation-vatid/commit/74a07a6217be349ffba46032a33a4c44df31338f))
+
 # 1.0.0 (2026-05-06)
 
 
