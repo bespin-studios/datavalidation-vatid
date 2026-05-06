@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe13e405cf2095aa7cf89156e5b2e5d8",
+    "content-hash": "75a367cbe5f8100b2ad48c8d29fbb189",
     "packages": [
         {
             "name": "bespin/datavalidation-shared",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bespin-studios/datavalidation-shared.git",
-                "reference": "fb1f93c10edce25a8c83cf5f322046ee4252da04"
+                "reference": "2886c2b2d5ff738306180aafc8d2a56e4a574bcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bespin-studios/datavalidation-shared/zipball/fb1f93c10edce25a8c83cf5f322046ee4252da04",
-                "reference": "fb1f93c10edce25a8c83cf5f322046ee4252da04",
+                "url": "https://api.github.com/repos/bespin-studios/datavalidation-shared/zipball/2886c2b2d5ff738306180aafc8d2a56e4a574bcd",
+                "reference": "2886c2b2d5ff738306180aafc8d2a56e4a574bcd",
                 "shasum": ""
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.11.4"
+                "phpstan/phpstan": "^2"
             },
             "type": "library",
             "autoload": {
@@ -42,9 +42,9 @@
             "description": "Shared components for bespin/datavalidation packages",
             "support": {
                 "issues": "https://github.com/bespin-studios/datavalidation-shared/issues",
-                "source": "https://github.com/bespin-studios/datavalidation-shared/tree/v1.2.0"
+                "source": "https://github.com/bespin-studios/datavalidation-shared/tree/v1.2.1"
             },
-            "time": "2024-10-01T12:30:47+00:00"
+            "time": "2025-05-20T12:20:56+00:00"
         }
     ],
     "packages-dev": [
@@ -286,16 +286,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.16",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "b8c1cf533cba0c305d91c6ccd23f3dd0566ba5f9"
-            },
+            "version": "2.1.54",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b8c1cf533cba0c305d91c6ccd23f3dd0566ba5f9",
-                "reference": "b8c1cf533cba0c305d91c6ccd23f3dd0566ba5f9",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8be50c3992107dc837b17da4d140fbbdf9a5c5bd",
+                "reference": "8be50c3992107dc837b17da4d140fbbdf9a5c5bd",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +335,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-16T09:40:10+00:00"
+            "time": "2026-04-29T13:31:09+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1967,7 +1962,7 @@
     },
     "platform-dev": {},
     "platform-overrides": {
-        "php": "8.1"
+        "php": "8.4.1"
     },
     "plugin-api-version": "2.9.0"
 }
