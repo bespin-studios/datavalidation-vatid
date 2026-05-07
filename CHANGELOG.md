@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.2...v1.1.3) (2026-05-07)
+
+
+### Bug Fixes
+
+* adjust tests ([358cf71](https://github.com/bespin-studios/datavalidation-vatid/commit/358cf716c1e9c088f7cfe021c7de4a5c69fbe18a))
+* adjust tests ([cefe829](https://github.com/bespin-studios/datavalidation-vatid/commit/cefe8299335a3ca0abbd1f5a6f32e65e80dea0ee))
+* adjust tests and fix spain validation ([c72a3f1](https://github.com/bespin-studios/datavalidation-vatid/commit/c72a3f1388bf061621c9dc09d8eeddf48f591251))
+
 ## [1.1.2](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.1...v1.1.2) (2026-05-06)
 
 
