@@ -13,6 +13,7 @@ jobs:
       - uses: php-actions/phpunit@v3
         with:
           php_extensions: mbstring
+          args: tests
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
         with:
