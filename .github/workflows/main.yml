@@ -10,7 +10,9 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_extensions: mbstring
-      - run: vendor/bin/phpunit tests
+      - uses: php-actions/phpunit@v3
+        with:
+          php_extensions: mbstring
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
         with:
