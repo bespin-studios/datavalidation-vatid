@@ -20,75 +20,66 @@ class Spain implements CountryInterface
     // ---------------
     public static function verify(string $vatId): bool
     {
-        if (!preg_match('/^ES([A-Z0-9]\d{7}[A-Z0-9])$/', $vatId, $m)) {
-            return false;
-        }
-        $n = $m[1];
-
-        // National juridical entities: letter + 8 digits
-        if (preg_match('/^([ABCDEFGHJNPQRSUVW])(\d{7})(\d)$/', $n, $s)) {
-            return self::verifySpainJuridical($s[2], (int)$s[3]);
+        if (str_starts_with($vatId, 'ES')) {
+            $vatId = substr($vatId, 2);
         }
 
-        // Other juridical entities: letter + 7 digits + letter check
-        if (preg_match('/^([ABCDEFGHJNPQRSUVW])(\d{7})([A-J])$/', $n, $s)) {
-            return self::verifySpainJuridicalLetter($s[2], $s[3]);
+        // Juridical: letter + 1-7 digits + check digit
+        if (preg_match('/^([ABCDEFGHJNPQRSUVW])(\d{1,7})(\d)$/', $vatId, $s)) {
+            $digits = str_pad($s[2], 7, '0', STR_PAD_LEFT);
+            return self::verifySpainJuridical($digits, (int)$s[3]);
         }
 
-        // Personal/physical entities (NIF): digit/Y/Z + 7 digits + letter
-        if (preg_match('/^([0-9YZ])(\d{7})([A-Z])$/', $n, $s)) {
-            return self::verifySpainPersonal($s[1], $s[2], $s[3]);
+        // Juridical: letter + 1-7 digits + check letter (types N,P,Q,R,S,W require letter check)
+        if (preg_match('/^([ABCDEFGHJNPQRSUVW])(\d{1,7})([A-Z])$/', $vatId, $s)) {
+            $digits = str_pad($s[2], 7, '0', STR_PAD_LEFT);
+            return self::verifySpainJuridicalLetter($digits, $s[3]);
         }
 
-        // Special personal (NIE): K/L/M/X + 7 digits + letter
-        if (preg_match('/^([KLMX])(\d{7})([A-Z])$/', $n, $s)) {
-            return self::verifySpainPersonal($s[1], $s[2], $s[3]);
+        // Personal NIF: 8 digits + letter (plain DNI)
+        if (preg_match('/^(\d{8})([A-Z])$/', $vatId, $s)) {
+            $table = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            return $s[2] === $table[(int)$s[1] % 23];
+        }
+
+        // Personal NIE: Y/Z prefix + 7 digits + letter
+        if (preg_match('/^([YZ])(\d{7})([A-Z])$/', $vatId, $s)) {
+            $table  = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            $prefix = $s[1] === 'Y' ? 1 : 2;
+            $number = (int)(''.$prefix.$s[2]);
+            return $s[3] === $table[$number % 23];
+        }
+
+        // Special legal entities: K, L, M, X prefix + 7 digits + letter
+        if (preg_match('/^([KLMX])(\d{7})([A-Z])$/', $vatId, $s)) {
+            $table  = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            $number = (int)$s[2];
+            return $s[3] === $table[$number % 23];
         }
 
         return false;
     }
+
     private static function verifySpainJuridical(string $digits, int $checkDigit): bool
     {
-        $table = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-        $d     = array_map('intval', str_split($digits));
-        $sum   = 0;
+        $sum = 0;
         for ($i = 0; $i < 7; $i++) {
-            if ($i % 2 === 0) {
-                $p   = $d[$i] * 2;
-                $sum += $p > 9 ? $p - 9 : $p;
-            } else {
-                $sum += $d[$i];
-            }
+            $c   = (int)$digits[$i] * ($i % 2 === 0 ? 2 : 1);
+            $sum += $c > 9 ? $c - 9 : $c;
         }
-        return $checkDigit === $table[$sum % 10];
+        $calculated = (10 - ($sum % 10)) % 10;
+        return $checkDigit === $calculated;
     }
 
     private static function verifySpainJuridicalLetter(string $digits, string $checkLetter): bool
     {
         $letters = 'JABCDEFGHI';
-        $d       = array_map('intval', str_split($digits));
         $sum     = 0;
         for ($i = 0; $i < 7; $i++) {
-            if ($i % 2 === 0) {
-                $p   = $d[$i] * 2;
-                $sum += $p > 9 ? $p - 9 : $p;
-            } else {
-                $sum += $d[$i];
-            }
+            $c   = (int)$digits[$i] * ($i % 2 === 0 ? 2 : 1);
+            $sum += $c > 9 ? $c - 9 : $c;
         }
+        // Use sum % 10 directly as index (NOT the (10 - sum%10) % 10 inversion)
         return $checkLetter === $letters[$sum % 10];
-    }
-
-    private static function verifySpainPersonal(string $first, string $digits, string $checkLetter): bool
-    {
-        $table = 'TRWAGMYFPDXBNJZSQVHLCKE';
-        // Y → 1, Z → 2, X → 0, K/L/M → treat leading as 0
-        $prefix = match ($first) {
-            'Y'     => '1',
-            'Z'     => '2',
-            default => '0',
-        };
-        $number = (int)($prefix.$digits);
-        return $checkLetter === $table[$number % 23];
     }
 }
