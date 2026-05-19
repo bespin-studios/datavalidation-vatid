@@ -37,8 +37,8 @@ class Ireland implements CountryInterface
             return self::verifyNewFormat($m[1], $m[2]);
         }
         // Newer format: 7 digits + letter + W  (W suffix for certain entity types)
-        if (preg_match('/^IE(\d{7})([A-W])W$/', $vatId, $m)) {
-            return self::verifyNewFormat($m[1], $m[2]);
+        if (preg_match('/^IE(\d{7})([A-W])([A-Z])$/', $vatId, $m)) {
+            return self::verifyNewFormat($m[1], $m[2], $m[3]);
         }
         // Old format: digit + letter + 5 digits + check letter
         if (preg_match('/^IE(\d)([A-Z])(\d{5})([A-W])$/', $vatId, $m)) {
@@ -47,15 +47,19 @@ class Ireland implements CountryInterface
         return false;
     }
 
-    private static function verifyNewFormat(string $sevenDigits, string $checkChar): bool
+    private static function verifyNewFormat(string $sevenDigits, string $checkChar, string $trailing = ''): bool
     {
+        $table   = 'WABCDEFGHIJKLMNOPQRSTUV';
         $d       = array_map('intval', str_split($sevenDigits));
         $weights = [8, 7, 6, 5, 4, 3, 2];
         $sum     = 0;
         for ($i = 0; $i < 7; $i++) {
             $sum += $d[$i] * $weights[$i];
         }
-        return $checkChar === 'WABCDEFGHIJKLMNOPQRSTUV'[$sum % 23];
+        if ($trailing !== '') {
+            $sum += strpos($table, $trailing) * 9;
+        }
+        return $checkChar === $table[$sum % 23];
     }
 
     private static function verifyOldFormat(
