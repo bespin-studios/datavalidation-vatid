@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.4...v1.1.5) (2026-05-19)
+
+
+### Bug Fixes
+
+* issue when verifying Spanish vatIds ([4014e0a](https://github.com/bespin-studios/datavalidation-vatid/commit/4014e0a6aef24e2330d5f21353f3397fe3efae8e))
+
 ## [1.1.4](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.3...v1.1.4) (2026-05-07)
 
 
