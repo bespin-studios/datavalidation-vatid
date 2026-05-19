@@ -79,7 +79,6 @@ class Spain implements CountryInterface
             $c   = (int)$digits[$i] * ($i % 2 === 0 ? 2 : 1);
             $sum += $c > 9 ? $c - 9 : $c;
         }
-        // Use sum % 10 directly as index (NOT the (10 - sum%10) % 10 inversion)
-        return $checkLetter === $letters[$sum % 10];
+        return $checkLetter === $letters[(10 - ($sum % 10)) % 10];
     }
 }
