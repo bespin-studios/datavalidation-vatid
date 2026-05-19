@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.5...v1.1.6) (2026-05-19)
+
+
+### Bug Fixes
+
+* issue when verifying Irish vatIds ([16c0578](https://github.com/bespin-studios/datavalidation-vatid/commit/16c0578701de4d58a81d0d5f138e3b9882578df1))
+
 ## [1.1.5](https://github.com/bespin-studios/datavalidation-vatid/compare/v1.1.4...v1.1.5) (2026-05-19)
 
 
